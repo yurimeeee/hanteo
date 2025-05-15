@@ -1,7 +1,6 @@
 import Header from './Header';
 /** @jsxImportSource @emotion/react */
 import { Outlet } from 'react-router-dom';
-import React from 'react';
 import { css } from '@emotion/react';
 
 const bgGradient = css`
@@ -12,6 +11,7 @@ const bgGradient = css`
 
 export default function Layout() {
   return (
+    // @ts-ignore
     <div className=" min-h-screen" css={bgGradient}>
       {/* <div className="w-full max-w-[425px] h-[900px] shadow-lg flex flex-col"> */}
       <div className="w-full max-w-[425px] h-[900px] shadow-lg flex flex-col">

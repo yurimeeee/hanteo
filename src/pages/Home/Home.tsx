@@ -1,7 +1,6 @@
 import { ContentsList } from '../../components/feature/ContentsList';
 import { CustomSlide } from '../../components/feature/CustomSlide';
 import { CustomTab } from '../../components/feature/CustomTab';
-import React from 'react';
 
 const Home = () => {
   const slideData = [

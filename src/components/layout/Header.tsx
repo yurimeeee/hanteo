@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Header() {
   return (
     <div className="px-5 py-5 flex justify-between">

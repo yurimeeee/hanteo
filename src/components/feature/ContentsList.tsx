@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { css } from '@emotion/react';
 import { getMockItems } from '../../api/mockApi';
@@ -8,6 +8,8 @@ type Item = {
   id: string;
   title: string;
   description: string;
+  link: string;
+  src: string;
 };
 
 const listContainer = css`
@@ -48,7 +50,7 @@ export const ContentsList = () => {
     if (newItems.length === 0) {
       setHasMore(false);
     } else {
-      setItems((prev) => [...prev, ...newItems]);
+      setItems((prev: any) => [...prev, ...newItems]);
     }
     setLoading(false);
   };
@@ -119,7 +121,7 @@ export const ContentsList = () => {
       </h2>
       <div css={listContainer}>
         {items.map((item) => (
-          <div key={item.id} css={itemStyle} onClick={() => window.open(item.link)}>
+          <div key={item.id} css={itemStyle} onClick={() => window.open(item?.link)}>
             <img src={item?.src} alt="" className="max-w-[80px] object-cover rounded-sm" />
             <div>
               <h3 className="font-semibold min-h-[48px]">{item.title && item.title.length > 30 ? item.title.slice(0, 30) + '...' : item.title}</h3>

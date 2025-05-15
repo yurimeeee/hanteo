@@ -142,6 +142,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import React from 'react';
+// @ts-ignore
 import Slider from 'react-slick';
 import { css } from '@emotion/react';
 
@@ -190,17 +191,6 @@ const bottomTextStyle = css`
   gap: 6px;
 `;
 
-const indicatorStyle = css`
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-`;
-
 export const CustomSlide = ({ data }: CustomSlideProps) => {
   const settings = {
     infinite: true,
@@ -220,6 +210,7 @@ export const CustomSlide = ({ data }: CustomSlideProps) => {
     pauseOnHover: true, // 👈 슬라이드 hover 시 autoplay 멈춤
     customPaging: (i: number) => (
       <div
+        key={i}
         css={css`
           width: 14px;
           height: 6px;

@@ -1,10 +1,9 @@
 import 'keen-slider/keen-slider.min.css';
 
-/** @jsxImportSource @emotion/react */
-import React, { useState } from 'react';
-
 import { css } from '@emotion/react';
 import { useKeenSlider } from 'keen-slider/react';
+/** @jsxImportSource @emotion/react */
+import { useState } from 'react';
 
 type CustomTabProps = {
   className?: string;
@@ -41,12 +40,14 @@ export const CustomTab = ({ className }: CustomTabProps) => {
     <div
       ref={sliderRef}
       className={`keen-slider ${className ?? ''}`}
+      // @ts-ignore
       css={css`
         overflow: hidden;
         padding: 0 16px 8px;
       `}
     >
       {tabs.map((tab) => (
+        // @ts-ignore
         <div key={tab} className="keen-slider__slide" css={tabItemStyle(activeTab === tab)} onClick={() => setActiveTab(tab)}>
           {tab}
         </div>
