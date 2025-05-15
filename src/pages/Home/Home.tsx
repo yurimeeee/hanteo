@@ -1,8 +1,10 @@
 import { ContentsList } from '../../components/feature/ContentsList';
 import { CustomSlide } from '../../components/feature/CustomSlide';
 import { CustomTab } from '../../components/feature/CustomTab';
+import { useState } from 'react';
 
 const Home = () => {
+  const [category, setCategory] = useState('차트');
   const slideData = [
     {
       src: '/assets/tws.jpg',
@@ -23,12 +25,12 @@ const Home = () => {
       link: 'https://www.youtube.com/watch?v=lBimDKKNDDs',
     },
   ];
+  console.log('category', category);
   return (
     <div>
-      {/* <CustomTab tabs={['전체', '스킨케어', '클렌징', '메이크업', '헤어', '바디', '남성', '건강식품', '소품']} onTabChange={(i) => console.log('선택된 탭:', i)} /> */}
-      <CustomTab className="mb-3" />
+      <CustomTab className="mb-3" category={category} setCategory={setCategory} />
       <CustomSlide data={slideData} />
-      <ContentsList />
+      <ContentsList category={category} />
     </div>
   );
 };

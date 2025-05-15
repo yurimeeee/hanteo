@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useRef, useState } from 'react';
 
+import SkeletonItem from './Skeleton';
 import { css } from '@emotion/react';
 import { getMockItems } from '../../api/mockApi';
 
@@ -37,7 +38,7 @@ const loadingStyle = css`
   margin: 16px 0;
 `;
 
-export const ContentsList = () => {
+export const ContentsList = (category: any) => {
   const [items, setItems] = useState<Item[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -46,7 +47,7 @@ export const ContentsList = () => {
 
   const loadItems = async (page: number) => {
     setLoading(true);
-    const newItems = await getMockItems('chart', page);
+    const newItems = await getMockItems(category.category, page);
     if (newItems.length === 0) {
       setHasMore(false);
     } else {
@@ -73,39 +74,16 @@ export const ContentsList = () => {
   }, [loading, hasMore]);
 
   useEffect(() => {
+    // 카테고리가 바뀌면 초기화
+    setItems([]);
+    setPage(1);
+    setHasMore(true);
+  }, [category]);
+
+  useEffect(() => {
+    // page가 바뀔 때 해당 페이지 데이터를 불러옴
     loadItems(page);
   }, [page]);
-  // // 더미 데이터 로딩 함수 (실제 Firebase나 API 대체 가능)
-  // const loadItems = async (page: number) => {
-  //   setLoading(true);
-  //   const newItems = Array.from({ length: 10 }, (_, i) => ({
-  //     id: `item-${page}-${i}`,
-  //     title: `Item ${page}-${i}`,
-  //     description: `This is the description for item ${page}-${i}`,
-  //   }));
-  //   await new Promise((res) => setTimeout(res, 1000)); // simulate delay
-  //   setItems((prev) => [...prev, ...newItems]);
-  //   setLoading(false);
-  // };
-
-  // // 무한 스크롤 IntersectionObserver
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       if (entries[0].isIntersecting && !loading) {
-  //         setPage((prev) => prev + 1);
-  //       }
-  //     },
-  //     { threshold: 1 }
-  //   );
-
-  //   if (loaderRef.current) observer.observe(loaderRef.current);
-  //   return () => observer.disconnect();
-  // }, [loading]);
-
-  // useEffect(() => {
-  //   loadItems(page);
-  // }, [page]);
 
   return (
     <>
@@ -130,7 +108,7 @@ export const ContentsList = () => {
           </div>
         ))}
         <div ref={loaderRef} css={loadingStyle}>
-          {loading ? '로딩 중...' : '스크롤하여 더 보기'}
+          {loading && Array.from({ length: 4 }).map((_, i) => <SkeletonItem key={i} />)}
         </div>
       </div>
     </>

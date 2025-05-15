@@ -1,12 +1,15 @@
 import 'keen-slider/keen-slider.min.css';
 
+/** @jsxImportSource @emotion/react */
+import { useEffect, useState } from 'react';
+
 import { css } from '@emotion/react';
 import { useKeenSlider } from 'keen-slider/react';
-/** @jsxImportSource @emotion/react */
-import { useState } from 'react';
 
 type CustomTabProps = {
   className?: string;
+  category?: string;
+  setCategory: any;
 };
 
 const tabItemStyle = (active: boolean) => css`
@@ -25,9 +28,9 @@ const tabItemStyle = (active: boolean) => css`
   cursor: pointer;
 `;
 
-export const CustomTab = ({ className }: CustomTabProps) => {
+export const CustomTab = ({ className, category, setCategory }: CustomTabProps) => {
   const tabs = ['차트', 'Whook', '이벤트', '뉴스', '스토어', '충전소'];
-  const [activeTab, setActiveTab] = useState('차트');
+  const [activeTab, setActiveTab] = useState(category);
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     slides: {
       perView: 'auto',
@@ -35,7 +38,11 @@ export const CustomTab = ({ className }: CustomTabProps) => {
     },
     mode: 'free-snap',
   });
+  useEffect(() => {
+    setCategory(activeTab);
+  }, [activeTab]);
 
+  console.log(activeTab, 'activeTab');
   return (
     <div
       ref={sliderRef}
@@ -48,7 +55,15 @@ export const CustomTab = ({ className }: CustomTabProps) => {
     >
       {tabs.map((tab) => (
         // @ts-ignore
-        <div key={tab} className="keen-slider__slide" css={tabItemStyle(activeTab === tab)} onClick={() => setActiveTab(tab)}>
+        <div
+          key={tab}
+          className="keen-slider__slide"
+          // @ts-ignore
+          css={tabItemStyle(activeTab === tab)}
+          onClick={() => {
+            setActiveTab(tab);
+          }}
+        >
           {tab}
         </div>
       ))}
