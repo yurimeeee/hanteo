@@ -33,11 +33,6 @@ const itemStyle = css`
   }
 `;
 
-const loadingStyle = css`
-  text-align: center;
-  margin: 16px 0;
-`;
-
 export const ContentsList = (category: any) => {
   const [items, setItems] = useState<Item[]>([]);
   const [page, setPage] = useState(1);
@@ -107,9 +102,7 @@ export const ContentsList = (category: any) => {
             </div>
           </div>
         ))}
-        <div ref={loaderRef} css={loadingStyle}>
-          {loading && Array.from({ length: 4 }).map((_, i) => <SkeletonItem key={i} />)}
-        </div>
+        <div ref={loaderRef}>{loading && Array.from({ length: 4 }).map((_, i) => <SkeletonItem key={i} />)}</div>
       </div>
     </>
   );

@@ -12,7 +12,7 @@ const skeletonStyle = css`
   padding: 12px;
   margin-bottom: 12px;
   border-radius: 8px;
-  background-color: #1e1e1e;
+  background: #0000008a;
   overflow: hidden;
 
   .thumbnail {
