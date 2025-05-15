@@ -8,7 +8,8 @@
   padding: 0 !important;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: #0a0f21;
+  background: radial-gradient(circle, rgba(10, 15, 33, 1) 0%, rgba(40, 61, 153, 1) 89%, rgba(39, 58, 146, 1) 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

@@ -14,7 +14,7 @@ export default function Layout() {
   return (
     // @ts-ignore
     <div className="min-h-screen w-full" css={bgGradient}>
-      <div className="mx-auto w-full max-w-[425px] h-[900px] shadow-lg flex flex-col">
+      <div className="mx-auto w-full max-w-[390px] h-[900px] shadow-lg flex flex-col">
         <Header />
         <main className="flex-1 p-4 overflow-y-auto relative">
           <Outlet />
