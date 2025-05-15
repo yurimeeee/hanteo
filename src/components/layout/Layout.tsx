@@ -1,6 +1,7 @@
 import Header from './Header';
 /** @jsxImportSource @emotion/react */
 import { Outlet } from 'react-router-dom';
+import TopButton from '../feature/TopButton';
 import { css } from '@emotion/react';
 
 const bgGradient = css`
@@ -15,9 +16,10 @@ export default function Layout() {
     <div className="min-h-screen w-full" css={bgGradient}>
       <div className="mx-auto w-full max-w-[425px] h-[900px] shadow-lg flex flex-col">
         <Header />
-        <main className="flex-1 p-4 overflow-y-auto">
+        <main className="flex-1 p-4 overflow-y-auto relative">
           <Outlet />
         </main>
+        <TopButton />
       </div>
     </div>
   );
