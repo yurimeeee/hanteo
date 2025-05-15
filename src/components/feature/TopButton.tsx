@@ -41,13 +41,13 @@ export default function TopButton() {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-20 left-1/2 transform translate-x-[132px] z-50 p-2 bg-white text-black rounded-full shadow-md transition-opacity duration-300 ${
+      className={`fixed bottom-14 left-1/2 transform translate-x-[132px] z-50 p-2 bg-white text-black rounded-full shadow-md transition-opacity duration-300 ${
         isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
       //@ts-ignore
       css={bottomStyle}
     >
-      <img src="/assets/icons/arrow.svg" alt="" width={20} />
+      <img src="/assets/icons/arrow.svg" alt="" width={16} />
     </button>
   );
 }
