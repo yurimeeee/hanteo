@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-import { css } from '@emotion/react';
-
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
